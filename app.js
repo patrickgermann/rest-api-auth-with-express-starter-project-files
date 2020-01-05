@@ -2,6 +2,7 @@
 
 const express = require('express');
 const morgan = require('morgan');
+const routes = require('./routes');
 
 // Create the Express app.
 const app = express();
@@ -11,6 +12,9 @@ app.use(express.json());
 
 // Setup morgan which gives us HTTP request logging.
 app.use(morgan('dev'));
+
+// Add routes.
+app.use('/api', routes);
 
 // Setup a friendly greeting for the root route.
 app.get('/', (req, res) => {
